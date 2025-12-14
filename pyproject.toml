@@ -7,7 +7,7 @@ name = "text2sql"
 version = "0.1.0"
 description = "Text to SQL project scaffold using LangGraph and LlamaIndex"
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = ">=3.13"
 dependencies = [
     "langgraph>=1.0.5",
     "llama-index>=0.14.10",
