@@ -1,0 +1,11 @@
+# Configuration for Text->SQL project (placeholders)
+# Fill in API keys, model names, and index locations as needed.
+
+api:
+  openai_api_key: "REPLACE_ME"
+
+models:
+  llm: "gpt-4o-mini"  # placeholder
+
+indexes:
+  default_index: "data/llama_index.json"

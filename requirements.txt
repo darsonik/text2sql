@@ -1,0 +1,5 @@
+# Core dependencies (pin versions when ready)
+langgraph
+llama-index
+openai
+pytest
