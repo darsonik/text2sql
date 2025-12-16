@@ -1730,6 +1730,9 @@ source = { editable = "." }
 dependencies = [
     { name = "langgraph" },
     { name = "llama-index" },
+    { name = "llama-index-core" },
+    { name = "llama-index-embeddings-openai" },
+    { name = "llama-index-llms-openai" },
     { name = "openai" },
     { name = "pytest" },
 ]
@@ -1738,6 +1741,9 @@ dependencies = [
 requires-dist = [
     { name = "langgraph", specifier = ">=1.0.5" },
     { name = "llama-index", specifier = ">=0.14.10" },
+    { name = "llama-index-core", specifier = ">=0.14.10" },
+    { name = "llama-index-embeddings-openai", specifier = ">=0.5.1" },
+    { name = "llama-index-llms-openai", specifier = ">=0.6.11" },
     { name = "openai", specifier = ">=2.11.0" },
     { name = "pytest", specifier = ">=9.0.2" },
 ]
