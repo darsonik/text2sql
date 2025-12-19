@@ -9,10 +9,14 @@ description = "Text to SQL project scaffold using LangGraph and LlamaIndex"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "langchain-fireworks>=1.1.0",
+    "langchain-openai>=1.1.5",
+    "langchain[openai]>=1.2.0",
     "langgraph>=1.0.5",
     "llama-index>=0.14.10",
     "llama-index-core>=0.14.10",
     "llama-index-embeddings-openai>=0.5.1",
+    "llama-index-llms-fireworks>=0.4.5",
     "llama-index-llms-openai>=0.6.11",
     "openai>=2.11.0",
     "pytest>=9.0.2",
