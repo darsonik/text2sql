@@ -1,19 +1,31 @@
-"""Placeholder for LlamaIndex connector logic.
+from llama_index.core.query_engine import NLSQLTableQueryEngine
+from text2sql.database.toy_data import engine
 
-This module will handle building or loading an index from schema docs and
-performing retrieval for queries that feed into the agent flow.
-"""
+def user_query(sql_database, llm, embed_model, tables : list, query_str: str):
+    """Run a query against the provided SQL database and LLM.
 
-class LlamaIndexConnector:
-    """Placeholder wrapper for llama-index related functionality."""
+    This function avoids executing code at import time; callers must provide
+    a valid `sql_database` and `llm` instance.
+    """
+    if NLSQLTableQueryEngine is None:
+        raise RuntimeError("llama_index is not available. Install `llama-index` to use `user_query`.")
 
-    def __init__(self, index_path: str = None):
-        self.index_path = index_path
+    query_engine = NLSQLTableQueryEngine(
+        sql_database=sql_database, 
+        tables=tables, 
+        llm=llm,
+        embed_model=embed_model
+    )
+    return query_engine.query(query_str)
 
-    def build_index(self, documents):
-        """Build index from a sequence of documents. TODO implement."""
-        raise NotImplementedError()
 
-    def query(self, prompt: str):
-        """Query the index and return hits. TODO implement."""
-        raise NotImplementedError()
+if __name__ == "__main__":
+    from llama_index.core import SQLDatabase
+    from text2sql.models.llm_models import llama_index_llm, llama_index_embed_model
+    sql_database = SQLDatabase(engine, include_tables=["average_income","city_stats"])
+    response = user_query(sql_database=sql_database, 
+                          llm=llama_index_llm, 
+                          embed_model=llama_index_embed_model,
+                          tables=["average_income","city_stats"], 
+                          query_str="What is the average income in cities with population over 1 million?")
+    print(response)
