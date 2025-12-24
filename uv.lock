@@ -1134,6 +1134,19 @@ wheels = [
 ]
 
 [[package]]
+name = "llama-index-embeddings-fireworks"
+version = "0.4.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "llama-index-core" },
+    { name = "llama-index-embeddings-openai" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/22/db/114447f49871ed3a581e635206548f137aedb85934ce5fd2f6c7a017122d/llama_index_embeddings_fireworks-0.4.2.tar.gz", hash = "sha256:082de3b6a44dc02eafd4f32c6985bf2092e4d4af0e3ba20eb1f43ef6c97b699c", size = 3996, upload-time = "2025-09-25T15:49:34.834Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/8f/b4/8341602bbee27481de32cdc645ec48122e39a58d47773af7040e6c1049b9/llama_index_embeddings_fireworks-0.4.2-py3-none-any.whl", hash = "sha256:2f726b4270aa58911264463be88b6155d56797f55f0891e8eb8a3d51fb30cd66", size = 3957, upload-time = "2025-09-25T15:49:33.927Z" },
+]
+
+[[package]]
 name = "llama-index-embeddings-openai"
 version = "0.5.1"
 source = { registry = "https://pypi.org/simple" }
@@ -2315,6 +2328,7 @@ dependencies = [
     { name = "langgraph" },
     { name = "llama-index" },
     { name = "llama-index-core" },
+    { name = "llama-index-embeddings-fireworks" },
     { name = "llama-index-embeddings-openai" },
     { name = "llama-index-llms-fireworks" },
     { name = "llama-index-llms-openai" },
@@ -2330,6 +2344,7 @@ requires-dist = [
     { name = "langgraph", specifier = ">=1.0.5" },
     { name = "llama-index", specifier = ">=0.14.10" },
     { name = "llama-index-core", specifier = ">=0.14.10" },
+    { name = "llama-index-embeddings-fireworks", specifier = ">=0.4.2" },
     { name = "llama-index-embeddings-openai", specifier = ">=0.5.1" },
     { name = "llama-index-llms-fireworks", specifier = ">=0.4.5" },
     { name = "llama-index-llms-openai", specifier = ">=0.6.11" },

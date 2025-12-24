@@ -12,9 +12,13 @@ llama_index_llm = Fireworks(model=os.getenv("FIREWORKS_MODEL_LLAMAINDEX"),
 # stream = llama_index_llm.complete("Tell me a joke about programmers.")
 # print(stream.text)
 
-llama_index_embed_model = Fireworks(model=os.getenv("FIREWORKS_EMBEDDING_MODEL"),
-                                   api_key=os.getenv("FIREWORKS_API_KEY"),
-                                   api_base=os.getenv("FIREWORKS_API_BASE"))
+from llama_index.embeddings.fireworks import FireworksEmbedding
+fireworks_embed_model = FireworksEmbedding(model_name=os.getenv("FIREWORKS_EMBEDDING_MODEL"),
+                                 api_key=os.getenv("FIREWORKS_API_KEY"), 
+                                 api_base=os.getenv("FIREWORKS_API_BASE"),
+                                 )
+
+
 
 langchain_llm = ChatFireworks(
     base_url=os.getenv("FIREWORKS_API_BASE"),
