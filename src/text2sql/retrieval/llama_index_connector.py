@@ -38,7 +38,7 @@ class LlamaIndexConnector:
         we store the table schema in an index so that during query time we can retrieve the right schema.
 
         Args:
-            query_str: Natural language query string
+            query_str: Natural language query string, this is not an SQL Query
 
         Returns:
             Query response from the LLM with retrieval
