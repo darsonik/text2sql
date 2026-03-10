@@ -7,11 +7,9 @@ from llama_index.core.objects import (
     SQLTableNodeMapping,
     SQLTableSchema,
 )
-from llama_index.core.query_engine import NLSQLTableQueryEngine
 
 from text2sql.database.table_schemas import average_income_text, city_stats_text
 from text2sql.database.toy_data import engine
-
 
 class LlamaIndexConnector:
     """Connector for LlamaIndex-based SQL retrieval and querying.
@@ -31,32 +29,6 @@ class LlamaIndexConnector:
         self.sql_database = sql_database
         self.llm = llm
         self.embed_model = embed_model
-
-    def user_query_basic(self, tables: list, query_str: str):
-        """Run a query against the SQL database and LLM.
-
-        This query function should be used in any case where you can specify the tables you want to query over beforehand,
-        or the total size of all the table schema plus the rest of the prompt fits your context window.
-
-        Args:
-            tables: List of table names to query over
-            query_str: Natural language query string
-
-        Returns:
-            Query response from the LLM
-        """
-        if NLSQLTableQueryEngine is None:
-            raise RuntimeError(
-                "llama_index is not available. Install `llama-index` to use `user_query_basic`."
-            )
-
-        query_engine = NLSQLTableQueryEngine(
-            sql_database=self.sql_database,
-            tables=tables,
-            llm=self.llm,
-            embed_model=self.embed_model,
-        )
-        return query_engine.query(query_str)
 
     def user_query_with_retrieval(self, query_str: str):
         """Run a query against the SQL database and LLM with retrieval.
@@ -121,13 +93,6 @@ if __name__ == "__main__":
         llm=llama_index_llm,
         embed_model=fireworks_embed_model,
     )
-
-    # Basic query
-    basic_response = connector.user_query_basic(
-        tables=["average_income", "city_stats"],
-        query_str="What is the average income in cities with population over 1 million?",
-    )
-    print(f"Response from basic query: {basic_response}")
 
     # Query with retrieval
     response_with_retrieval = connector.user_query_with_retrieval(
