@@ -1,19 +1,36 @@
-"""Placeholders for LangGraph flows and agent setup.
+"""LangGraph flows and agent setup orchestration.
 
-Add LangGraph flows that coordinate retrieval (LlamaIndex) + SQL generation steps.
+This module provides an abstraction over the LangGraph agent for easy execution.
 """
 
-# TODO: Import LangGraph components and define flows
+from text2sql.agents.langgraph_config import agent
+
 
 class AgentFlow:
-    """High-level orchestrator placeholder for agent flows."""
+    """High-level orchestrator for agent flows based on LangGraph."""
 
     def __init__(self, config=None):
-        self.config = config
+        self.config = config or {"configurable": {"thread_id": "demo"}}
+        self.agent = agent
 
     def run(self, query: str):
         """Execute the flow for a user query.
 
-        Returns NotImplemented for now.
+        Args:
+            query: The user's natural language question.
+
+        Returns:
+            The final answer string from the AI agent.
         """
-        raise NotImplementedError()
+        response = self.agent.invoke(
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": query,
+                    }
+                ]
+            },
+            config=self.config,
+        )
+        return response["messages"][-1].content
