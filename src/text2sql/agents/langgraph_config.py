@@ -10,9 +10,10 @@ checkpointer = InMemorySaver()
 config = {"configurable": {"thread_id": "3"}}
 
 system_prompt = (
-    "You are an expert SQL agent that can help users query a SQL database. "
+    "You are an expert analyst that can help users by providing answers from database. "
     "Use the provided tool to answer user questions. The tool allows you to "
     "query the database directly. "
+    "The tools take a single input which is the user's query string in natural language, and return the answer from the database."
 )
 
 agent = create_react_agent(
