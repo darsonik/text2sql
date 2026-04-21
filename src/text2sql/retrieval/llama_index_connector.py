@@ -68,19 +68,6 @@ class LlamaIndexConnector:
 
         return query_engine.query(query_str)
 
-    def build_index(self, docs):
-        """Build an index from a list of documents.
-        Not implemented yet.
-        """
-        raise NotImplementedError
-
-    def query(self, query_str):
-        """Query the index with a string.
-        Not implemented yet.
-        """
-        raise NotImplementedError
-
-
 if __name__ == "__main__":
     from llama_index.core import SQLDatabase
     from text2sql.models.llm_models import llama_index_llm, fireworks_embed_model
